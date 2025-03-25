@@ -6,8 +6,10 @@ def reverse_list(lst):
     :param lst: List of integers.
     :return: A list with elements in reverse order.
     """
-    lst.reverse()
-    return lst
+    rev_lst = []
+    for i in range(len(lst)-1,-1,-1):
+        rev_lst.append(lst[i])
+    return rev_lst
 
 def count_occurrences(lst, element):
     """
@@ -17,9 +19,11 @@ def count_occurrences(lst, element):
     :return: Integer count of occurrences.
     """
     count = 0
-    if element in lst:
-        count += 1
+    for num in lst:
+        if num == element:
+            count += 1
     return count
+
 
 def get_keys_with_value(dct, value):
     """
@@ -28,8 +32,11 @@ def get_keys_with_value(dct, value):
     :param value: Value to find.
     :return: List of keys.
     """
-    dict.keys(value)
-    return list[keys]
+    new_lst = []
+    for key,value in dict.items():
+        if value == value1:
+            new_lst.append(key)
+    return new_lst
 
 def merge_sorted_lists(lst1, lst2):
     """
@@ -38,8 +45,14 @@ def merge_sorted_lists(lst1, lst2):
     :param lst2: Second sorted list.
     :return: Merged sorted list.
     """
-    merge_lst = sorted(lst1 + lst2)
-    return merge_lst
+    new_lst = []
+    for number in lst1:
+        new_lst.append(number)
+    for num in lst2:
+        new_lst.append(num)
+    sorted_list = sorted(new_lst)
+    return sorted_list
+    
 
 
 def find_second_largest(numbers):
@@ -48,17 +61,17 @@ def find_second_largest(numbers):
     :param numbers: List of integers.
     :return: The second largest integer.
     """
-    largest = 0
-    second_largest = 0
-    my_list = [0]
+    highest = max(numbers)
+    empty = []
+    for num in numbers:
+        if num < highest:
+            empty.append(num)
+    if empty != []:
+        second_largest = max(empty)
+    else:
+        second_largest = None
+    return second_largest
 
-    for number in my_list[1:]:
-        if number > largest:
-            second_largest = largest
-            largest = number
-        elif number == second_largest and number != largest:
-            second_largest = number
-    print(second_largest)
 
 def is_anagram(str1, str2):
     """
@@ -77,8 +90,6 @@ def is_anagram(str1, str2):
     else:
         return False
     
-    str1 = "listen"
-    str2 = "silence"
 
 
 
@@ -88,7 +99,7 @@ def flatten_list(nested_list):
     :param nested_list: List of lists.
     :return: A flat list with all elements.
     """
-    pass  # Implement this
+    pass
 
 
 def remove_duplicates(lst):
@@ -97,8 +108,8 @@ def remove_duplicates(lst):
     :param lst: List of elements.
     :return: List without duplicates.
     """
-    my_lst = lst(set(my_lst))
-    return my_lst
+
+    return list(sorted(set(lst)))
 
 def find_common_elements(lst1, lst2):
     """
@@ -107,5 +118,7 @@ def find_common_elements(lst1, lst2):
     :param lst2: Second list.
     :return: List of common elements.
     """
-    new_lst = lst1 + lst2
+    lstA = set(lst1)
+    lstB = set(lst2)
+    new_lst = list(lstA.intersection(lstB))
     return new_lst
